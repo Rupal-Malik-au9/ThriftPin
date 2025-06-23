@@ -1,4 +1,4 @@
-import { Thrifter, PinterestBoard, ThriftOffer, StyleTag, User, Order, Review } from '@/types'
+import { Thrifter, PinterestBoard, ThriftOffer, User, Order, Review } from '@/types'
 
 export const mockUsers: User[] = [
   {

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { User, PinterestBoard, ThriftOffer, Order, Thrifter, BoardSubmission, UserPreferences } from '@/types'
+import { User, PinterestBoard, ThriftOffer, Order, BoardSubmission, UserPreferences } from '@/types'
 import { mockUsers, mockBoards, mockOffers, mockOrders, mockThrifters } from '@/data/mockData'
 
 interface AppState {
@@ -34,7 +34,7 @@ interface AppState {
   submitBoardOffer: (boardId: string, offer: Omit<ThriftOffer, 'id' | 'createdAt' | 'status'>) => void
 }
 
-export const useStore = create<AppState>((set, get) => ({
+export const useStore = create<AppState>((set) => ({
   // Initial state
   currentUser: mockUsers[0], // For demo purposes, start logged in
   isAuthenticated: true,

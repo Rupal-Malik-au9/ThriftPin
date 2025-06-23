@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { styleCollections } from "@/data/mockData"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Heart, Pin, Package, Star, ArrowRight, Users, Sparkles, Eye, Zap, ShoppingBag, Gift, Search, Palette } from "lucide-react"
+import { Heart, Pin, Star, ArrowRight, Users, Sparkles, Eye, Zap, Gift, Search } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -106,8 +106,8 @@ export default function LandingPage() {
               Every Pin Tells Your Style Story
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your Pinterest board isn't just a collection—it's your personal style DNA. 
-              ThriftPin reads between your pins to understand what makes your heart skip a beat.
+              {`Your Pinterest board isn't just a collection—it's your personal style DNA. 
+              ThriftPin reads between your pins to understand what makes your heart skip a beat.`}
             </p>
           </div>
 
@@ -133,7 +133,7 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">AI Reads Your Aesthetic</h3>
-                    <p className="text-gray-600 text-lg">Our visual intelligence analyzes your board's colors, patterns, silhouettes, and vibes to understand your unique taste.</p>
+                    <p className="text-gray-600 text-lg">{`Our visual intelligence analyzes your board's colors, patterns, silhouettes, and vibes to understand your unique taste.`}</p>
                   </div>
                 </div>
               </div>
@@ -280,7 +280,7 @@ export default function LandingPage() {
                   <CardContent className="p-6">
                     <h3 className="font-bold text-xl text-gray-900 mb-2">{collection.title}</h3>
                     <p className="text-gray-600 mb-3">Curated by {collection.curator}</p>
-                    <p className="text-sm text-gray-500 mb-4 italic">"{collection.boardStyle}"</p>
+                    <p className="text-sm text-gray-500 mb-4 italic">{`"${collection.boardStyle}"`}</p>
                     <div className="flex flex-wrap gap-2">
                       {collection.tags.map((tag, tagIndex) => (
                         <span key={tagIndex} className="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full font-medium">
@@ -310,8 +310,8 @@ export default function LandingPage() {
             Ready to Turn Pins into Treasures?
           </h2>
           <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
-            Join thousands of Pinterest lovers who've discovered their perfect thrift matches. 
-            Your dream wardrobe is just one board link away.
+            {`Join thousands of Pinterest lovers who've discovered their perfect thrift matches. 
+            Your dream wardrobe is just one board link away.`}
           </p>
           <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 rounded-full px-12 py-4 text-xl font-bold transform hover:scale-110 transition-all duration-300 shadow-2xl">
             <Pin className="mr-3 h-6 w-6" />
