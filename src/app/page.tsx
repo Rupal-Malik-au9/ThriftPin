@@ -25,32 +25,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { ThemeType } from "@/types";
 import { colorThemes } from "@/lib/utils";
+import Footer from "@/components/ui/Footer";
+import FloatingBackground from "@/components/ui/FloatingBackground";
+import CTASection from "@/components/ui/CTASection";
+import SignInButton from "@/components/ui/SigninButton";
 
-// Floating Background Component
-const FloatingBackground = ({ theme }: {theme:ThemeType}) => (
-  <div className="fixed inset-0 pointer-events-none transition-all duration-1000 ease-in-out">
-    <div
-      className="absolute top-10 left-10 w-16 h-16 rounded-full animate-pulse opacity-60 transition-all duration-1000"
-      style={{ backgroundColor: theme.accent }}
-    ></div>
-    <div
-      className="absolute top-32 right-20 w-12 h-12 rounded-full animate-bounce opacity-40 transition-all duration-1000"
-      style={{ backgroundColor: theme.accentDark }}
-    ></div>
-    <div
-      className="absolute bottom-40 left-16 w-20 h-20 rounded-full animate-pulse opacity-50 transition-all duration-1000"
-      style={{ backgroundColor: theme.background }}
-    ></div>
-    <div
-      className="absolute top-60 left-1/3 w-8 h-8 rounded-full animate-ping opacity-30 transition-all duration-1000"
-      style={{ backgroundColor: theme.accentDark }}
-    ></div>
-    <div
-      className="absolute bottom-20 right-32 w-14 h-14 rounded-full animate-bounce opacity-40 transition-all duration-1000"
-      style={{ backgroundColor: theme.accent }}
-    ></div>
-  </div>
-);
+
 
 // Header Component
 const Header = ({ theme }: {theme:ThemeType}) => (
@@ -84,7 +64,7 @@ const Header = ({ theme }: {theme:ThemeType}) => (
           Discover
         </Link>
         <Link
-          href="#how-it-works"
+          href="how-it-works"
           className="text-gray-600 hover:transition-colors font-medium transition-all duration-300"
           onMouseEnter={(e) =>
             ((e.target as HTMLElement).style.color = theme.primary)
@@ -95,13 +75,7 @@ const Header = ({ theme }: {theme:ThemeType}) => (
         >
           How it works
         </Link>
-        <Button
-          variant="outline"
-          className="rounded-full border-2 hover:scale-105 transition-transform"
-          style={{ color: theme.primary, borderColor: theme.primary }}
-        >
-          Sign In
-        </Button>
+      <SignInButton pageTheme={theme}/>
       </nav>
     </div>
   </header>
@@ -420,165 +394,67 @@ const CollectionsShowcase = ({ theme }: {theme: ThemeType}) => (
       </div>
 
       {/* Masonry Grid */}
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-        {styleCollections.map((collection, index) => (
-          <div key={index} className="break-inside-avoid">
-            <Card className="group transition-all duration-500 border-0 rounded-3xl overflow-hidden transform hover:scale-105 !shadow-none">
-              <div className="relative overflow-hidden">
-                <Image
-                  alt="Collection Image"
-                  src={collection.image}
-                  width={400}
-                  height={500}
-                  className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                  <div className="flex items-center space-x-1">
-                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                    <span className="text-sm font-semibold">
-                      {collection.rating}
-                    </span>
-                  </div>
-                </div>
+      <div className="relative max-h-[1200px] overflow-hidden">
+  <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+    {styleCollections.map((collection, index) => (
+      <div key={index} className="break-inside-avoid">
+        <Card className="group transition-all duration-500 border-0 rounded-3xl overflow-hidden transform hover:scale-105 !shadow-none">
+          <div className="relative overflow-hidden">
+            <Image
+              alt="Collection Image"
+              src={collection.image}
+              width={400}
+              height={500}
+              className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+              <div className="flex items-center space-x-1">
+                <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                <span className="text-sm font-semibold">
+                  {collection.rating}
+                </span>
               </div>
-              <CardContent className="p-6">
-                <h3 className="font-bold text-xl text-gray-900 mb-2">
-                  {collection.title}
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Curated by {collection.curator}
-                </p>
-                <p className="text-sm text-gray-500 mb-4 italic">
-                  {`"${collection.boardStyle}"`}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {collection.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 text-sm rounded-full font-medium transition-all duration-1000"
-                      style={{
-                        backgroundColor: theme.accent,
-                        color: theme.text,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// CTA Section Component
-const CTASection = ({ theme }: {theme: ThemeType}) => (
-  <section
-    className="py-24 text-white relative overflow-hidden transition-all duration-1000 ease-in-out"
-    style={{
-      background: `linear-gradient(to bottom right, ${theme.primary}, ${theme.primaryHover}, ${theme.primary})`,
-    }}
-  >
-    {/* Floating Shapes */}
-    <div className="absolute inset-0">
-      <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-bounce"></div>
-      <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-white/10 rounded-full animate-ping"></div>
-    </div>
-
-    <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <h2 className="text-5xl font-bold mb-6">
-        Ready to Turn Pins into Treasures?
-      </h2>
-      <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
-        {`Join thousands of Pinterest lovers who've discovered their perfect
-        thrift matches. Your dream wardrobe is just one board link away.`}
-      </p>
-      <Button
-        size="lg"
-        className="bg-white rounded-full px-12 py-4 text-xl font-bold transform hover:scale-110 transition-all duration-300 shadow-2xl hover:bg-gray-100"
-        style={{ color: theme.primary }}
-      >
-        <Pin className="mr-3 h-6 w-6" />
-        Start Your Style Journey
-        <Sparkles className="ml-3 h-6 w-6" />
-      </Button>
-    </div>
-  </section>
-);
-
-// Footer Component
-const Footer = ({ theme }: {theme: ThemeType}) => (
-  <footer className="bg-gray-900 text-white py-16">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="grid md:grid-cols-4 gap-8 mb-12">
-        <div className="md:col-span-2">
-          <div className="flex items-center space-x-3 mb-6">
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-1000"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <Pin className="h-7 w-7 text-white" />
             </div>
-            <span className="text-2xl font-bold">ThriftPin</span>
           </div>
-          <p className="text-gray-400 text-lg max-w-md">
-            Where Pinterest inspiration meets sustainable fashion. Turning your
-            style dreams into eco-friendly reality.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-bold text-lg mb-4">For Pinners</h4>
-          <ul className="space-y-3 text-gray-400">
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                Link Your Board
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                How It Works
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                Style Matching
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-bold text-lg mb-4">For Thrifters</h4>
-          <ul className="space-y-3 text-gray-400">
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                Join as Curator
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                Thrifter Guidelines
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-white transition-colors">
-                Success Stories
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <CardContent className="p-6">
+            <h3 className="font-bold text-xl text-gray-900 mb-2">
+              {collection.title}
+            </h3>
+            <p className="text-gray-600 mb-3">
+              Curated by {collection.curator}
+            </p>
+            <p className="text-sm text-gray-500 mb-4 italic">
+              {`"${collection.boardStyle}"`}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {collection.tags.map((tag, tagIndex) => (
+                <span
+                  key={tagIndex}
+                  className="px-3 py-1 text-sm rounded-full font-medium transition-all duration-1000"
+                  style={{
+                    backgroundColor: theme.accent,
+                    color: theme.text,
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
+    ))}
+  </div>
 
-      <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 ThriftPin. Sustainable style, Pinterest-inspired.</p>
-      </div>
+  {/* Bottom overlay to indicate there's more content */}
+  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+</div>
     </div>
-  </footer>
+  </section>
 );
+
+
 
 // Main Landing Page Component
 export default function LandingPage() {

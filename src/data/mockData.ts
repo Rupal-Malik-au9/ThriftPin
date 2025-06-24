@@ -1,4 +1,5 @@
 import { Thrifter, PinterestBoard, ThriftOffer, User, Order, Review } from '@/types'
+import { Eye, Gift, Pin, Search, Star, Truck } from 'lucide-react'
 
 export const mockUsers: User[] = [
   {
@@ -300,14 +301,6 @@ export const styleCollections = [
     boardStyle: "Flowing fabrics, nature motifs, delicate details"
   },
   {
-    image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=480&fit=crop",
-    title: "Cottagecore Academia",
-    curator: "Willow G.",
-    rating: "4.8",
-    tags: ["Academia", "Cottagecore", "Scholarly"],
-    boardStyle: "Cardigans, books, warm browns, cozy textures"
-  },
-  {
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=550&fit=crop",
     title: "Art Hoe Vintage",
     curator: "Indie A.",
@@ -324,14 +317,6 @@ export const styleCollections = [
     boardStyle: "Heavy silk lehengas, gold jewelry, rich colors"
   },
   {
-    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=580&fit=crop",
-    title: "California Surf Vibes",
-    curator: "Ocean B.",
-    rating: "4.6",
-    tags: ["Surf", "Casual", "Beachy"],
-    boardStyle: "Flowy tops, denim shorts, natural textures"
-  },
-  {
     image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=450&fit=crop",
     title: "Southern Belle Charm",
     curator: "Magnolia S.",
@@ -340,3 +325,97 @@ export const styleCollections = [
     boardStyle: "Sundresses, pearls, sweet pastels, florals"
   }
 ];
+
+
+export const detailedSteps = [
+    {
+      number: "01",
+      icon: Pin,
+      title: "Link Your Pinterest Board",
+      description: "Share your fashion board URL and set your preferences",
+      details: [
+        "Copy your Pinterest board URL",
+        "Set your size preferences (XS-3XL)",
+        "Choose your budget range ($25-$200)",
+        "Select style preferences and must-haves",
+        "Tell us about colors you love or avoid"
+      ],
+      timeline: "2 minutes",
+      color: "rgb(59, 130, 246)", // blue-600
+    },
+    {
+      number: "02",
+      icon: Eye,
+      title: "AI Analyzes Your Style",
+      description: "Our visual intelligence reads your aesthetic DNA",
+      details: [
+        "AI scans all pins in your board",
+        "Identifies color palettes and patterns",
+        "Recognizes silhouettes and styles",
+        "Maps your fashion personality",
+        "Creates your unique style profile"
+      ],
+      timeline: "Instant",
+      color: "rgb(147, 51, 234)",
+    },
+    {
+      number: "03",
+      icon: Search,
+      title: "Expert Thrifters Discover You",
+      description: "Curators browse your board and get inspired",
+      details: [
+        "Experienced thrifters view your board",
+        "They study your pins and preferences",
+        "Browse local thrift stores and vintage shops",
+        "Hunt for pieces matching your aesthetic",
+        "Consider quality, condition, and authenticity"
+      ],
+      timeline: "1-3 days",
+      color: "rgb(34, 197, 94)",
+    },
+    {
+      number: "04",
+      icon: Gift,
+      title: "Receive Curated Proposals",
+      description: "Get personalized surprise box offers",
+      details: [
+        "Thrifters create custom box proposals",
+        "See photos and descriptions of each item",
+        "Review thrifter profiles and ratings",
+        "Compare different box options",
+        "Choose your favorite proposal"
+      ],
+      timeline: "Within 24 hours",
+      color: "rgb(236, 72, 153)",
+    },
+    {
+      number: "05",
+      icon: Truck,
+      title: "Secure Payment & Shipping",
+      description: "Safe transaction and fast delivery",
+      details: [
+        "Secure payment processing",
+        "Items professionally packaged",
+        "Tracking information provided",
+        "Insurance coverage included",
+        "Free returns within 7 days"
+      ],
+      timeline: "3-5 days",
+      color: "rgb(234, 88, 12)",
+    },
+    {
+      number: "06",
+      icon: Star,
+      title: "Unbox & Rate Experience",
+      description: "Discover your treasures and share feedback",
+      details: [
+        "Unbox your curated surprise",
+        "Try on your new pieces",
+        "Rate each item and overall experience",
+        "Share photos with the community",
+        "Build relationship with your thrifter"
+      ],
+      timeline: "Ongoing",
+      color: "rgb(168, 85, 247)",
+    }
+  ];
