@@ -138,3 +138,12 @@ export interface MockData {
   orders: Order[];
   reviews: Review[];
 }
+export interface ThemeType {
+ accent: string;
+ background: string;
+ primary: string;
+ primaryHover: string
+ accentDark: string;
+ text: string;
+ name: string;
+}
