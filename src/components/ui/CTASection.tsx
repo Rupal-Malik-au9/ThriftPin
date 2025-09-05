@@ -29,6 +29,7 @@ const CTASection = ({ theme }: {theme: ThemeType}) => (
         size="lg"
         className="bg-white rounded-full px-12 py-4 text-xl font-bold transform hover:scale-110 transition-all duration-300 shadow-2xl hover:bg-gray-100"
         style={{ color: theme.primary }}
+        onClick={() => window.location.href = "/onboard"}
       >
         <Pin className="mr-3 h-6 w-6" />
         Start Your Style Journey

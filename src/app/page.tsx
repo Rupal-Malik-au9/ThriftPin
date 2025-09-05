@@ -21,65 +21,17 @@ import {
   Search,
 } from "lucide-react";
 import { styleCollections } from "@/data/mockData";
-import Link from "next/link";
 import Image from "next/image";
 import { ThemeType } from "@/types";
 import { colorThemes } from "@/lib/utils";
 import Footer from "@/components/ui/Footer";
 import FloatingBackground from "@/components/ui/FloatingBackground";
 import CTASection from "@/components/ui/CTASection";
-import SignInButton from "@/components/ui/SigninButton";
+import Header from "@/components/ui/Header";
 
 
 
-// Header Component
-const Header = ({ theme }: {theme:ThemeType}) => (
-  <header className="z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 sticky top-0 transition-all duration-1000">
-    <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div className="flex items-center space-x-3 group cursor-pointer">
-        <div
-          className="w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg"
-          style={{ backgroundColor: theme.primary }}
-        >
-          <Pin className="h-7 w-7 text-white" />
-        </div>
-        <span
-          className="text-2xl font-bold text-gray-800 group-hover:transition-colors transition-all duration-300"
-          style={{ color: `${theme.primary}` }}
-        >
-          ThriftPin
-        </span>
-      </div>
-      <nav className="hidden md:flex items-center space-x-8">
-        <Link
-          href="#discover"
-          className="text-gray-600 hover:transition-colors font-medium transition-all duration-300"
-          onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.color = theme.primary)
-          }
-          onMouseLeave={(e) =>
-            ((e.target as HTMLElement).style.color = "rgb(75, 85, 99)")
-          }
-        >
-          Discover
-        </Link>
-        <Link
-          href="how-it-works"
-          className="text-gray-600 hover:transition-colors font-medium transition-all duration-300"
-          onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.color = theme.primary)
-          }
-          onMouseLeave={(e) =>
-            ((e.target as HTMLElement).style.color = "rgb(75, 85, 99)")
-          }
-        >
-          How it works
-        </Link>
-      <SignInButton pageTheme={theme}/>
-      </nav>
-    </div>
-  </header>
-);
+
 
 // Hero Section Component
 const HeroSection = ({ theme }: {theme:ThemeType}) => (
@@ -460,7 +412,7 @@ const CollectionsShowcase = ({ theme }: {theme: ThemeType}) => (
 export default function LandingPage() {
   const [currentTheme, setCurrentTheme] = useState(0);
   const [lastScrollTime, setLastScrollTime] = useState(Date.now());
-
+  const [isOpenSigninModal, setIsOpenSigninModal] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const now = Date.now();
@@ -487,7 +439,7 @@ export default function LandingPage() {
       <FloatingBackground theme={theme} />
 
       {/* Header */}
-      <Header theme={theme} />
+      <Header theme={theme} isOpenSigninModal={isOpenSigninModal} setIsOpenSigninModal={setIsOpenSigninModal}/>
 
       {/* Hero Section */}
       <HeroSection theme={theme} />
