@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowRight, 
@@ -58,7 +58,7 @@ export default function ThriftOnboardingFlow() {
     }
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     nextStep();
   };
@@ -127,8 +127,8 @@ export default function ThriftOnboardingFlow() {
                     Welcome to Your Thrift Journey!
                   </h1>
                   <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                    We noticed you hearted {likedItems.length} amazing items! Let's create your account 
-                    and build a personalized thrift experience just for you.
+                    {`We noticed you hearted {likedItems.length} amazing items! Let's create your account 
+                    and build a personalized thrift experience just for you.`}
                   </p>
                   
                   <div className="bg-white rounded-2xl p-6 mb-8 shadow-lg max-w-md mx-auto">
@@ -147,7 +147,7 @@ export default function ThriftOnboardingFlow() {
                     onClick={nextStep}
                     className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-2xl shadow-lg font-medium text-lg flex items-center gap-2 mx-auto"
                   >
-                    Let's Get Started <ArrowRight className="h-5 w-5" />
+                    {`Let's Get Started`} <ArrowRight className="h-5 w-5" />
                   </motion.button>
                 </motion.div>
               )}
@@ -358,7 +358,7 @@ export default function ThriftOnboardingFlow() {
                         </label>
                         <textarea
                           className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
-                          rows="3"
+                          rows={3}
                           placeholder="Tell others about your thrift style..."
                         />
                       </div>
@@ -496,7 +496,7 @@ export default function ThriftOnboardingFlow() {
                       📌
                     </motion.div>
                     <h2 className="text-3xl font-bold text-gray-900">Your First Collection!</h2>
-                    <p className="text-gray-600 mt-2">We've created your first collection with the items you loved</p>
+                    <p className="text-gray-600 mt-2">{`We've created your first collection with the items you loved`}</p>
                   </div>
 
                   <div className="bg-white rounded-2xl p-6 shadow-lg mb-8">

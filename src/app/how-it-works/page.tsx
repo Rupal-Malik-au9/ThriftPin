@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from "react";
+import { useState, useEffect, Key } from "react";
 import {
   Sparkles,
   CheckCircle,
@@ -163,7 +163,7 @@ const RoleSelectionModal = ({ isOpen, onClose, onSelectRole }: RoleSelectionModa
                 <Eye className="h-8 w-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
-                I'm a Seeker 👀
+                {`I'm a Seeker 👀`}
               </h3>
               <p className="text-gray-600 text-center">
                 I want to browse & find unique thrift treasures curated just for my style
@@ -179,7 +179,7 @@ const RoleSelectionModal = ({ isOpen, onClose, onSelectRole }: RoleSelectionModa
                 <Palette className="h-8 w-8 text-pink-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
-                I'm a Curator 🎨
+                {`I'm a Curator 🎨`}
               </h3>
               <p className="text-gray-600 text-center">
                 I want to list and share my curated thrift finds with fashion seekers
@@ -277,7 +277,7 @@ const HeroSection = ({
           </div>
 
           <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
-            {content.title.map((line: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined, index: Key | null | undefined) => (
+            {content.title.map((line: string, index: Key | null | undefined) => (
               <span 
                 key={index} 
                 className={`block ${index === 1 ? 'animate-bounce transition-all duration-1000' : ''}`} 
@@ -417,7 +417,7 @@ const FAQSection = ({
       answer: "You simply share the public URL of your Pinterest board. Curators can view your pins to understand your style, but they cannot access any private information or interact with your Pinterest account directly."
     },
     {
-      question: "What if I don't like the items in my surprise box?",
+      question: `What if I don't like the items in my surprise box?`,
       answer: "We offer a 7-day return policy for all items. You can return any pieces that don't fit or match your style for a full refund. Our goal is 100% satisfaction with your thrift discoveries."
     },
     {
@@ -557,7 +557,7 @@ const CTASection = ({
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {content.stats.map((stat: { number: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; label: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }, index: Key | null | undefined) => (
+          {content.stats.map((stat: { number: string,label:string}, index: Key | null | undefined) => (
             <div key={index} className="text-center">
               <div className="text-4xl font-bold mb-2" style={{ color: theme.primary }}>
                 {stat.number}

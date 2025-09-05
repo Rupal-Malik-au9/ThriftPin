@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Heart, Pin, Filter, Sparkles, TrendingUp, Eye, ShoppingBag, X } from "lucide-react";
+import { Search, Heart, Pin, Sparkles, TrendingUp, Eye, ShoppingBag, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const thriftItems = [
   {
@@ -475,10 +476,12 @@ const handleStartPinning = () => {
               </button>
 
               {/* Image */}
-              <img
+              <Image
                 src={selectedItem.image}
                 alt={selectedItem.title}
                 className="w-full h-64 object-cover"
+                width={400}
+                height={256}
               />
 
               {/* Details */}
